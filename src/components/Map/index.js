@@ -1,15 +1,17 @@
 import React, { Component, Fragment } from 'react'
-import { View }                       from 'react-native'
+import { View, Image }                       from 'react-native'
 import MapView, { Marker }            from 'react-native-maps'
 import { getPixelSize }               from '../../utils'
 import Geocoder                       from 'react-native-geocoding'
 
 import Search     from '../Search'
 import Directions from '../Directions'
+import Details    from '../Details'
 
-import markerImage from '../../assets/marker.png'
-
-import { LocationBox, LocationText, LocationTimeBox, LocationTimeText, LocationTimeTextSmall } from './styles'
+import markerImage                                                                                   from '../../assets/marker.png'
+import backImage
+                                                                                                     from '../../assets/back.png'
+import { Back, LocationBox, LocationText, LocationTimeBox, LocationTimeText, LocationTimeTextSmall } from './styles'
 
 Geocoder.init('AIzaSyCtVCUc0lK34koG6M-8butMhhIBeBM1TgU')
 
@@ -120,7 +122,17 @@ export default class Map extends Component {
             </Fragment>
           ) }
         </MapView>
-        <Search onLocationSelected={ this.handleLocationSelected }/>
+
+        { destination ? (
+          <Fragment>
+            <Back onPress={ this.handleBack }>
+              <Image source={ backImage }/>
+            </Back>
+            <Details/>
+          </Fragment>
+        ) : <Search
+          onLocationSelected={ this.handleLocationSelected }/> }
+
       </View>
     )
   }
