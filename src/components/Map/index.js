@@ -13,7 +13,7 @@ import backImage
                                                                                                      from '../../assets/back.png'
 import { Back, LocationBox, LocationText, LocationTimeBox, LocationTimeText, LocationTimeTextSmall } from './styles'
 
-Geocoder.init('AIzaSyCtVCUc0lK34koG6M-8butMhhIBeBM1TgU')
+Geocoder.init('API HERE')
 
 export default class Map extends Component {
   state = {
